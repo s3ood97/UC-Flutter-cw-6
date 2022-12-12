@@ -17,46 +17,49 @@ class HomePage extends StatelessWidget {
         ),
         backgroundColor: Colors.red,
       ),
-      body: ListView.builder(itemBuilder: ((context, index) {
-        return Container(
-          height: 150,
-          width: 150,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                return MovieDetails(statues: Statue.Statues[index]);
-              })));
-            },
-            child: Container(
-              width: 100,
-              height: 100,
-              child: Card(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 200,
-                        width: 200,
-                        child: Image.network(
-                          Statue.Statues[index].image,
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          Statue.Statues[index].name,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+      body: ListView.builder(
+          itemCount: Statue.Statues.length,
+          itemBuilder: ((context, index) {
+            return Container(
+              height: 150,
+              width: 150,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) {
+                    return MovieDetails(statues: Statue.Statues[index]);
+                  })));
+                },
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  child: Card(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 200,
+                            width: 200,
+                            child: Image.network(
+                              Statue.Statues[index].image,
+                            ),
                           ),
-                        ),
-                      )
-                    ]),
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              Statue.Statues[index].name,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ]),
+                  ),
+                ),
               ),
-            ),
-          ),
-        );
-      })),
+            );
+          })),
     );
   }
 }
